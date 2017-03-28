@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打字游戏</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding:0;
+	}
+	body{
+		/*background: url(bg/jm1.jpg)0px -300px no-repeat;*/
+		background: url(bg/play.jpg);
+	}
+	p{
+		font: bold 30px/2 '苹方';
+		padding:0 100px;
+		/*color:#fff;*/
+		float: right;
+	}
+	p span{
+		color:red;
+		margin-left: 20px;
+	}
+	.button{
+		width: 100%;
+		height: 100%;
+		padding:0;
+		float: right;
+		font: bold 16px/2 '苹方';
+		position: absolute;
+		/*display: none;*/
+		top:0;
+		left:0;
+		z-index: 100;
+		background: url(bg/buttom.jpg)right center no-repeat;
+	}
+	.button img{
+		margin: 50px auto 0;
+		display: block;
+		width: 700px;
+	}
+	.button span{
+		width: 500px;
+		height: 50px;
+		float: left;
+		position: absolute;
+		top:70%;
+		left:0;
+		right:0;
+		margin:0 auto;
+	}
+	input{
+		width:200px;
+		height: 50px;
+		outline: none;
+		border:none;
+		font: 24px/50px '苹方';
+		/*color:#F5DEB3;*/
+		color:#F0FFFF;
+		/*background:rgb(241,194,70);*/
+		border-radius:50px;
+		background:url(bg/play1.png) center no-repeat;
+		background-size: cover;
+		margin-left: 20px;
+		float: left;
+	}
+	input:active{
+		background: url(bg/play.png) center no-repeat;
+		background-size: cover;
+		color:#fff;
+	}
+	.xx{
+		height: 125px;
+		width: 100%;
+		position:absolute;
+		bottom: 0;
+		display: none;
+	}
+	.xx .stop{
+		width: 200px;
+		height: 50px;
+		margin: 10px 0;
+	}
+	.xx .oute{
+		width: 200px;
+		height: 50px;
+	}
+	#djs{
+		width: 500px;
+		height: 100%;
+		font:bold 500px/550px '苹方';
+		text-align: center;
+		position: absolute;
+		left:0;
+		top:0;
+		right:0;
+		/*z-index: 999;*/
+		bottom: 0;
+		margin: 0 auto;
+		color: #fff;  
+	}
+</style>
+<body>
+	<div class="button">
+		<img src="bg/icon.png" alt="">
+		<span>
+			<input type="button" class="num" value="记分模式" >
+			<input type="button" class="countdown" value="时间模式">
+		</span>
+	</div>
+		<div id="djs">5</div>
+	<div class="xx">
+		<hr height="10px" >
+		<p>分数:<span id="score">0</span></p>
+		<p class="shijian">HP:<span id="hp">10</span></p>
+		<p>关卡：<span id="customspass">1</span></p>
+		<div class="stop"><input type="button" value="暂停" id="stop"></div>
+		<div class="oute"><input type="button" value="停止" id="oute"></div>
+	</div>
+</body>
+</html>
+<script src="fun.js"></script>
+<script src="index.js"></script>
+<script>
+window.onload=function(){
+	var codeText=new game();//获取函数
+
+	var button=document.querySelector('.button')//获取
+	var num=button.querySelector('.num');//字符按钮
+	var countdown=button.querySelector('.countdown');//时间按钮
+	var xx=document.querySelector('.xx')//信息面板
+	var shijian=xx.querySelector('.shijian');//hp值
+	var scores=xx.querySelector('#score');//hp
+	var stop=document.querySelector('#stop');
+	var djs=document.querySelector('#djs');
+	var oute=document.querySelector('#oute')
+	var i=5;
+	// console.log(djs)
+	var flag=true,flags=true;
+	stop.onclick=function(){
+		this.value = this.value=="暂停" ? "继续" : "暂停";
+		if(flag){
+			codeText.stop();
+			flag=false;
+		}else{
+			codeText.goon();
+			flag=true
+		}
+		// console.log(stop.disabled)
+	};
+	oute.onclick=function(){
+		// console.log(oute.value)
+		this.value = this.value=="停止" ? "开始" : "停止";
+		if(flags){
+			codeText.oute();
+			flags=false;
+		}else{
+			codeText.restart();
+			flags=true;
+		}
+	}
+	// console.log(hp)
+		// codeText.play();
+	num.onclick=function(){
+		var lengths=prompt('输入出现的字符数量','5')//获取出现的字符数
+		if(lengths != null&&lengths<=20){
+			codeText.lengths=lengths;
+			codeText.hp=10;
+			// console.log(codeText.hp)
+			button.style.display='none';//隐藏选项
+		var it=setInterval(function(){
+			djs.innerHTML=--i;
+			if(djs.innerHTML==0&&i==0){
+				clearInterval(it)
+				xx.style.display='block';//显示信息面板
+				djs.style.display='none';
+				codeText.play();//运行
+			}
+		},1000)
+		}else{
+			button.style.display='block';//隐藏选项
+		}
+	}
+	countdown.onclick=function(){
+		var countdowns=prompt('输入时间,以秒计时','60');
+		if(countdowns!=null){
+			codeText.countdowns=countdowns;
+			button.style.display='none';
+		}else{
+			button.style.display="block";
+		}
+			shijian.style.display='none';
+			codeText.hp=null;//清除hp
+			codeText.p.style.display='none';
+			var it=setInterval(function(){
+				djs.innerHTML=--i;
+				if(djs.innerHTML==0&&i==0){
+					clearInterval(it)
+					djs.style.display='none';
+					xx.style.display='block';
+					codeText.play();//运行
+					js=setInterval(function(){//倒计时
+						codeText.countdowns--;
+						if(codeText.countdowns==0){
+							clearInterval(codeText.t)
+							clearInterval(js);
+							alert('您的分数为'+scores.innerHTML);
+							button.style.display='block';
+						}
+					},1000);		
+					clearInterval(it);
+				}
+			},1000)
+	}
+}
+</script>

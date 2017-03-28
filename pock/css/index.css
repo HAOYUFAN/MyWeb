@@ -1,0 +1,72 @@
+*{
+	margin: 0;
+	padding: 0;
+	border:0;
+}
+html,body{
+	width: 100%;
+	height: auto;
+	background: ##3c1300;
+	background:url(../img/4.jpg) no-repeat center;
+}
+.play{
+	width:240px;
+	height:70px;
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:0;
+	top:0;
+	margin:auto;
+	z-index: 999;
+	background:url(../img/play.png);
+	background-size:cover
+}
+.play:active{
+	background:url(../img/plat1.png);
+	background-size:cover
+	
+}
+.zhuozi{
+	width: 700px;
+	height: 600px;
+	margin: 10px auto 0;
+	background-size: cover;
+	position:relative;
+}
+.zhuozi .pai{
+	width:90px;
+	height:130px;
+	background-size:90px 130px;
+	position:absolute;
+	left:300px;
+	top:0px;
+	opacity: 0;
+}
+.active{
+	/*transform: scale(1.5, 1.5);*/
+	/*transition: .3s transform;*/
+	/*border:2px solid #66FF00;*/
+	box-shadow:0 0 30px rgb(255, 228, 0);
+}
+.zhuozi .left,.right{
+	width:60px;
+	height:30px;
+	background:#FF4500;
+	position:absolute;
+	bottom:50px;
+	left:0;
+	right:0;
+	font:20px/30px "微软雅黑";
+	color:#fff;
+	text-align: center;
+	margin:0 auto;
+	display: none;
+}
+.zhuozi .right{
+	bottom:100px;
+}
+.zhuozi img{
+	/*width:60px;*/
+	height:30px;
+} 

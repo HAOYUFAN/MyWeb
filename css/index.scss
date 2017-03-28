@@ -3,8 +3,7 @@
   font-family: 'serif';
   src:url(../font/webfont.woff);
 }
-@font-face {
-  font-family: icon;
+@font-face {  font-family: icon;
   src:url(../font/iconfont.woff);
 }
 @font-face {
@@ -14,6 +13,16 @@
 *{
   @include base;
   font-family: 'serif',Consolas;
+}
+%black{
+  color:#1d1d1b;
+}
+%color{
+  background: #1d1d1b;
+}
+.bodys{
+  height:100%;
+  overflow: hidden !important;
 }
 @media screen and (min-width: 920px) {
   @for $index from 1 through 12 {
@@ -34,6 +43,13 @@
     }
   }
 }
+@mixin margin(){
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  margin:auto;
+}
 .row::after{
   content:'';
   display: block;
@@ -45,11 +61,13 @@ input{
 header{
   width:100%;
   position:fixed;
-  z-index: 9999;
+  z-index: 9;
   background:rgba(0,0,0,0.4);
   height:60px;
   .header-bar{
+    overflow: hidden;
     width:100%;
+    height:100%;
     box-sizing:border-box;
     padding:0 22px;
     //overflow: hidden;
@@ -90,8 +108,35 @@ header{
       }
     }
   }
+  .music{
+    width:60px;
+    height:60px;
+    position: absolute;
+    top:75px;
+    right:10px;
+    a{
+      width:100%;
+      height:100%;
+      display: block;
+      background: url("../images/music.svg") center/cover no-repeat;
+      &:hover::after{
+        content: '播放音乐^v^';
+        display: block;
+        width:60px;
+        height:60px;
+        text-align: center;
+        line-height: 30px;
+        color:#fff;
+        position: absolute;
+        top:0;
+        background:rgba(0,0,0,0.4);
+        font-size: 14px;
+      }
+    }
+  }
 }
 .hero{
+  overflow: hidden;
   width:100%;
   height: 100vh;
   color:#fff;
@@ -127,7 +172,7 @@ header{
         margin-bottom: 68px;
         position: relative;
       }
-      div.img{
+      .img{
         float:left;
         width: 57.35098%;
         margin-right:2.35765%;
@@ -135,7 +180,7 @@ header{
           width:100%;
         }
       }
-      div.capion{
+      .capion{
         width:40%;
         height:100%;
         float:left;
@@ -144,8 +189,7 @@ header{
           width:80%;
           margin:0 auto;
           text-align: center;
-          font-size: 25px;
-          font-weight: bold;
+          font-size: 16px;
           padding-top: 30px;
         }
         span{
@@ -165,12 +209,17 @@ header{
             display: inline-block;
             font-size: 11px;
             font-weight: 700;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
             &:hover{
               background:#000;
               color:#E1EEDC;
             }
           }
+        }
+      }
+      .dom1{
+        div.img{
+          float:right;
         }
       }
     }
@@ -183,17 +232,15 @@ header{
         text-align: center;
         top:55%;
         margin:0 auto;
-        a{
-          color:#fff;
+        p{
           font-size: 16px;
           display: inline-block;
           padding:15px 20px;
           border:2px solid #fff;
-          &:hover{
-            text-decoration: underline;
-            background:#fff;
-            color:#000;
-          }
+          text-decoration: underline;
+          background:#fff;
+          //-webkit-text-fill-color: transparent;
+          color:#000;
         }
       }
     }
@@ -234,6 +281,7 @@ header{
             display: inline-block;
             padding:15px 20px;
             border:2px solid #1D1D1B;
+            transition: all 0.5s ease;
             &:hover{
               background:#1D1D1B;
               color:#fff;
@@ -250,6 +298,142 @@ header{
     }
   }
 }
+$width:1.5px;
+$height:0.5px;
+.undergo{
+  width:100%;
+  height:100%;
+  background:#fff;
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .undergo-con{
+    width:40%;
+    height:80%;
+    box-sizing: border-box;
+    padding:30px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    align-content: space-between;
+    & span{
+      display: block;
+      width:280px;
+      height:30px;
+      line-height: 30px;
+      position: relative;
+      transition: all 0.8s ease;
+      p{
+        color:transparent;
+        display: block;
+        width:0%;
+        height:100%;
+        visibility: hidden;
+        overflow: hidden;
+        transition: all 0.8s ease;
+      }
+      &::before{
+        content: '·';
+        display: block;
+        @include margin;
+        left:-122%;
+        top:5px;
+        width:15px;
+        height:15px;
+        border-radius: 50%;
+      }
+    }
+    & span:nth-child(1){
+      top: 5%;
+    }
+    & span:nth-child(2){
+      top: 25%;
+    }
+    & span:nth-child(3){
+      top:45%;
+    }
+    & span:nth-child(4){
+      top:70%;
+    }
+  }
+  .close{
+    width:40px;
+    height:40px;
+    background: url(../images/close.png) center no-repeat;
+    position: absolute;
+    top:0;
+    right:0;
+  }
+}
+
+.undergo{
+}
+.undergo-con::after{
+  content: '';
+  display: block;
+  width:$width;
+  height:0;
+  @extend %color;
+  @include margin;
+  left:-40%;
+  transition: all 20s linear;
+}
+.undergo.active{
+  top:0;
+  z-index: 10 !important;
+  .undergo-con{
+    span p{
+      width:100%;
+      visibility: visible;
+    }
+    span:nth-child(1){
+      &::before{
+        @extend %color;
+        transition-delay: 4.5s;
+      }
+      p{
+        transition-delay: 4.5s;
+        @extend %black;
+      }
+    }
+    span:nth-child(2){
+      &::before{
+        @extend %color;
+        transition-delay: 7s;
+      }
+      p{
+        @extend %black;
+        transition-delay: 7s;
+      }
+    }
+    span:nth-child(3){
+      &::before{
+        @extend %color;
+        transition-delay: 10.5s;
+      }
+      p{
+        @extend %black;
+        transition-delay: 10.5s;
+      }
+    }
+    span:nth-child(4){
+      &::before{
+        @extend %color;
+        transition-delay: 13.5s;
+      }
+      p{
+        @extend %black;
+        transition-delay: 13.5s;
+      }
+    }
+  }
+  .undergo-con::after{
+    height:100%;
+  }
+}
+
 
 .footer{
   width:100%;
@@ -399,25 +583,25 @@ header{
     }
   }
   .main .main-con .subsection{
+    padding: 90px 0 0;
     div.img{
       width:100%;
       margin:0;
     }
     div.capion{
       width:100%;
-      height:auto;
+      height:200px;
       margin:0;
     }
     div.dom1{
       div.img{
-        padding-bottom: 225px;
-      }
-      div.capion{
-        position:absolute;
-        bottom:0;
-
+        float:none;
+        //padding-bottom: 225px;
       }
     }
+  }
+  .undergo{
+
   }
   .footer{
     .top-section{

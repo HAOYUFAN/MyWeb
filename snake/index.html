@@ -1,0 +1,172 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+</head>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+img{
+	border:none;
+}
+	.sence{
+		width: 100vw;
+		height: 100vh;
+		background: url(img/document.jpg) no-repeat;
+		background-size: cover; 
+	}
+	.sence .sences{
+		width: 1220px;
+		height: 640px;
+		background: url(img/banner.jpg);
+		overflow: hidden;
+		float: left;
+		position: relative;
+		z-index: 99;
+		display: none;
+		
+	}
+	.sence .buttom{
+		width: 100vw;
+		height: 100vh;
+		background-size: cover;
+		background: url(img/play.jpg)center no-repeat;
+		position: absolute;
+		z-index: 10;
+	}
+	.sence .buttom input{
+		position: absolute;
+		left:0;
+		top:0;
+		right:0;
+		bottom: 0;
+		margin:auto auto;
+	}
+	.buttom img{
+		width: 700px;
+		display: block;
+		margin:  0 auto;
+	}
+	.sence .box{
+		width: 100vw;
+		height: 100vh;
+		position: absolute;
+		z-index: 9;
+		background: rgb(157,249,128);
+	}
+
+	.sence  .box .boxs {
+		width: 660px;
+		height: 50px;
+		position: absolute;
+		left:0;
+		top:0;
+		right:0;
+		bottom: 0;
+		margin:auto auto;
+		
+	}
+	input{
+		border-radius:45px;
+		background-size: cover;
+		background: url(img/paly1.png) no-repeat center;
+	}
+	.sence input{
+		font: 24px/50px '苹方';
+		width: 200px;
+		height: 50px;	
+		border: none;
+		float: left;
+		margin-right: 20px;
+		color:red;
+	}
+	input:active{
+		background-size: cover;
+		background: url(img/play.png)center no-repeat;
+	}
+	.nature{
+		width: 100px;
+		height: 100%;
+		position: absolute;
+		right:10px;
+		z-index: 8;
+	}
+	.nature input{
+		width: 100px;
+		height: 50px;
+		background-size:cover;
+	}
+	p{
+		width: 100px;
+		height: auto;
+		font: bold 20px/2 '苹方';
+		color:#fff;
+	}
+	.tou{
+		background: url(img/3.png)-1px no-repeat;
+		
+	}
+	.hod{
+		background: url(img/background.jpg)-1px no-repeat;
+	}
+	.hot{
+		width: 20px;
+		height: 20px;
+	/* 	border-width:0 1px 1px 0;
+	border-style:solid;
+	border-color: #000; */
+		border-radius: 50%;
+		background-repeat: no-repeat;
+		background-size: 100% ;
+		background-position:left top;
+		float: left;
+	}
+</style>
+<body>
+	<div class="sence">
+		<div class="sences"></div>
+		<div class="buttom">
+			<img src="img/icon.png" alt="">
+			<input type="button" value="开始" class="buttons">
+		</div>
+		<div class="box">
+			<div class="boxs">
+				<input type="button" value="简单" class="briefness">
+				<input type="button" value="一般" class="ordinary">
+				<input type="button" value="困难" class="abnormal">
+			</div>
+		</div>
+		<div class="nature">
+			<input type="button" value="返回" class="return">
+			<p>分数：<span>0</span></p>
+		</div>
+	</div>
+</body>
+</html>
+<script src="fun.js"></script>
+<script src="index.js"></script>
+<script>
+$(function  () {
+		var sence=document.querySelector('.sence');
+		var senceInput=sence.querySelector('.buttons');
+		var senceButtom=sence.querySelector('.buttom');
+	box=document.querySelector('.box');
+	briefness=box.querySelector('.briefness');
+	ordinary=box.querySelector('.ordinary');
+	abnormal=box.querySelector('.abnormal');
+	var tanchishe=new snake();
+	senceInput.onclick=function(){
+		senceButtom.style.display='none';
+		tanchishe.play();
+	};
+	document.onkeydown=function(e){
+		if(e.keyCode==13){
+			senceButtom.style.display='none';
+			tanchishe.play();
+		}
+	}
+})
+</script>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/mp3.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+<audio src="music/戴荃-悟空.mp3" id="audio" preload></audio>
+<div id="music">
+    <!--信息-->
+    <div class="song">
+        <div class="cole"></div>
+        <div class="sone-con">
+            <span class="text">-----</span>
+            <span class="singer">----</span>
+        </div>
+    </div>
+    <!--列表-->
+    <input type="checkbox" id="play">
+    <div id="list">
+        <label for="play">
+            <div class="alert"></div>
+        </label>
+        <ul class="list">
+        </ul>
+    </div>
+    <div class="avatar-title">
+        <div class="avatar"></div>
+    </div>
+    <!--控制台-->
+    <div class="console">
+        <div class="time">
+            <time>
+                <span class="curr">00:00</span>
+            </time>
+            <div class="duration">
+                <div class="current">
+                    <div class="cret"></div>
+                </div>
+            </div>
+            <time>
+                <span class="dura">00:00</span>
+            </time>
+        </div>
+        <div class="button">
+            <div class="order iconfont icon-music_repeat_button"></div>
+            <div class="prav iconfont icon-music_beginning_button"></div>
+            <div class="play-pause iconfont icon-music_play_button"></div>
+            <div class="next iconfont icon-music_end_button"></div>
+            <div class="vouln iconfont icon-music_volume_up"></div>
+            <div class="vol-sped">
+                <div class="volumes">
+                    <div class="vol">
+                        <div class="vol_cret"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<div class="filter"></div>
+</body>
+</html>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/mp3.js"></script>

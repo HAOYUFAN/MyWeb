@@ -22,6 +22,16 @@
   border: 0;
   font-family: 'serif',Consolas; }
 
+.undergo.active .undergo-con span:nth-child(1) p, .undergo.active .undergo-con span:nth-child(2) p, .undergo.active .undergo-con span:nth-child(3) p, .undergo.active .undergo-con span:nth-child(4) p {
+  color: #1d1d1b; }
+
+.undergo-con::after, .undergo.active .undergo-con span:nth-child(1)::before, .undergo.active .undergo-con span:nth-child(2)::before, .undergo.active .undergo-con span:nth-child(3)::before, .undergo.active .undergo-con span:nth-child(4)::before {
+  background: #1d1d1b; }
+
+.bodys {
+  height: 100%;
+  overflow: hidden !important; }
+
 @media screen and (min-width: 920px) {
   .col-lg-1 {
     float: left;
@@ -145,11 +155,13 @@ input {
 header {
   width: 100%;
   position: fixed;
-  z-index: 9999;
+  z-index: 9;
   background: rgba(0, 0, 0, 0.4);
   height: 60px; }
   header .header-bar {
+    overflow: hidden;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
     padding: 0 22px; }
     header .header-bar .logo {
@@ -182,8 +194,32 @@ header {
           color: #fff;
           padding: 0 10px;
           font-size: 10px; }
+  header .music {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 75px;
+    right: 10px; }
+    header .music a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: url("../images/music.svg") center/cover no-repeat; }
+      header .music a:hover::after {
+        content: '播放音乐^v^';
+        display: block;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+        position: absolute;
+        top: 0;
+        background: rgba(0, 0, 0, 0.4);
+        font-size: 14px; }
 
 .hero {
+  overflow: hidden;
   width: 100%;
   height: 100vh;
   color: #fff;
@@ -215,43 +251,44 @@ header {
         height: auto;
         margin-bottom: 68px;
         position: relative; }
-      .main .main-con .subsection div.img {
+      .main .main-con .subsection .img {
         float: left;
         width: 57.35098%;
         margin-right: 2.35765%; }
-        .main .main-con .subsection div.img img {
+        .main .main-con .subsection .img img {
           width: 100%; }
-      .main .main-con .subsection div.capion {
+      .main .main-con .subsection .capion {
         width: 40%;
         height: 100%;
         float: left;
         margin-top: 10%; }
-        .main .main-con .subsection div.capion p, .main .main-con .subsection div.capion span {
+        .main .main-con .subsection .capion p, .main .main-con .subsection .capion span {
           width: 80%;
           margin: 0 auto;
           text-align: center;
-          font-size: 25px;
-          font-weight: bold;
+          font-size: 16px;
           padding-top: 30px; }
-        .main .main-con .subsection div.capion span {
+        .main .main-con .subsection .capion span {
           font-size: 16px;
           display: block;
           text-align: left;
           font-weight: 200; }
-        .main .main-con .subsection div.capion .button {
+        .main .main-con .subsection .capion .button {
           width: 100%;
           text-align: center;
           margin: 30px auto; }
-          .main .main-con .subsection div.capion .button a {
+          .main .main-con .subsection .capion .button a {
             border: 2px solid #1d1d1b;
             padding: 14px 26px;
             display: inline-block;
             font-size: 11px;
             font-weight: 700;
-            transition: all 0.3s ease; }
-            .main .main-con .subsection div.capion .button a:hover {
+            transition: all 0.5s ease; }
+            .main .main-con .subsection .capion .button a:hover {
               background: #000;
               color: #E1EEDC; }
+      .main .main-con .subsection .dom1 div.img {
+        float: right; }
     .main .main-con .image-section {
       width: 100%;
       height: 880px;
@@ -261,16 +298,14 @@ header {
         text-align: center;
         top: 55%;
         margin: 0 auto; }
-        .main .main-con .image-section .title-holder a {
-          color: #fff;
+        .main .main-con .image-section .title-holder p {
           font-size: 16px;
           display: inline-block;
           padding: 15px 20px;
-          border: 2px solid #fff; }
-          .main .main-con .image-section .title-holder a:hover {
-            text-decoration: underline;
-            background: #fff;
-            color: #000; }
+          border: 2px solid #fff;
+          text-decoration: underline;
+          background: #fff;
+          color: #000; }
     .main .main-con .module-section {
       width: 100%;
       background: #fff;
@@ -301,7 +336,8 @@ header {
             font-size: 16px;
             display: inline-block;
             padding: 15px 20px;
-            border: 2px solid #1D1D1B; }
+            border: 2px solid #1D1D1B;
+            transition: all 0.5s ease; }
             .main .main-con .module-section .itemlist .module-cta a:hover {
               background: #1D1D1B;
               color: #fff; }
@@ -309,6 +345,106 @@ header {
         background: #E1EEDC; }
       .main .main-con .module-section .list2 {
         background: #E1EEF9; }
+
+.undergo {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .undergo .undergo-con {
+    width: 40%;
+    height: 80%;
+    box-sizing: border-box;
+    padding: 30px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    align-content: space-between; }
+    .undergo .undergo-con span {
+      display: block;
+      width: 280px;
+      height: 30px;
+      line-height: 30px;
+      position: relative;
+      transition: all 0.8s ease; }
+      .undergo .undergo-con span p {
+        color: transparent;
+        display: block;
+        width: 0%;
+        height: 100%;
+        visibility: hidden;
+        overflow: hidden;
+        transition: all 0.8s ease; }
+      .undergo .undergo-con span::before {
+        content: '·';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        left: -122%;
+        top: 5px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%; }
+    .undergo .undergo-con span:nth-child(1) {
+      top: 5%; }
+    .undergo .undergo-con span:nth-child(2) {
+      top: 25%; }
+    .undergo .undergo-con span:nth-child(3) {
+      top: 45%; }
+    .undergo .undergo-con span:nth-child(4) {
+      top: 70%; }
+  .undergo .close {
+    width: 40px;
+    height: 40px;
+    background: url(../images/close.png) center no-repeat;
+    position: absolute;
+    top: 0;
+    right: 0; }
+
+.undergo-con::after {
+  content: '';
+  display: block;
+  width: 1.5px;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  left: -40%;
+  transition: all 20s linear; }
+
+.undergo.active {
+  top: 0;
+  z-index: 10 !important; }
+  .undergo.active .undergo-con span p {
+    width: 100%;
+    visibility: visible; }
+  .undergo.active .undergo-con span:nth-child(1)::before {
+    transition-delay: 4.5s; }
+  .undergo.active .undergo-con span:nth-child(1) p {
+    transition-delay: 4.5s; }
+  .undergo.active .undergo-con span:nth-child(2)::before {
+    transition-delay: 7s; }
+  .undergo.active .undergo-con span:nth-child(2) p {
+    transition-delay: 7s; }
+  .undergo.active .undergo-con span:nth-child(3)::before {
+    transition-delay: 10.5s; }
+  .undergo.active .undergo-con span:nth-child(3) p {
+    transition-delay: 10.5s; }
+  .undergo.active .undergo-con span:nth-child(4)::before {
+    transition-delay: 13.5s; }
+  .undergo.active .undergo-con span:nth-child(4) p {
+    transition-delay: 13.5s; }
+  .undergo.active .undergo-con::after {
+    height: 100%; }
 
 .footer {
   width: 100%;
@@ -426,18 +562,17 @@ header {
       height: auto; }
       .main .main-con .image-section {
         height: 560px; }
-  .main .main-con .subsection div.img {
-    width: 100%;
-    margin: 0; }
-  .main .main-con .subsection div.capion {
-    width: 100%;
-    height: auto;
-    margin: 0; }
-  .main .main-con .subsection div.dom1 div.img {
-    padding-bottom: 225px; }
-  .main .main-con .subsection div.dom1 div.capion {
-    position: absolute;
-    bottom: 0; }
+  .main .main-con .subsection {
+    padding: 90px 0 0; }
+    .main .main-con .subsection div.img {
+      width: 100%;
+      margin: 0; }
+    .main .main-con .subsection div.capion {
+      width: 100%;
+      height: 200px;
+      margin: 0; }
+    .main .main-con .subsection div.dom1 div.img {
+      float: none; }
   .footer .top-section {
     padding: 0; }
     .footer .top-section .section {

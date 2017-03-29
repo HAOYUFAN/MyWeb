@@ -311,6 +311,9 @@ header {
       background: #fff;
       box-sizing: border-box;
       padding: 90px 20px 0; }
+      .main .main-con .module-section .itemlist:hover {
+        box-shadow: 0 0 30px #666;
+        z-index: 10; }
       .main .main-con .module-section .itemlist {
         width: 100%;
         box-sizing: border-box;
@@ -322,7 +325,7 @@ header {
           .main .main-con .module-section .itemlist .module-img img {
             width: 100%; }
         .main .main-con .module-section .itemlist .module-description {
-          min-height: 185px;
+          min-height: 200px;
           margin: 0 15px;
           text-align: center; }
           .main .main-con .module-section .itemlist .module-description h1 {
@@ -432,17 +435,17 @@ header {
   .undergo.active .undergo-con span:nth-child(1) p {
     transition-delay: 4.5s; }
   .undergo.active .undergo-con span:nth-child(2)::before {
-    transition-delay: 7s; }
+    transition-delay: 9s; }
   .undergo.active .undergo-con span:nth-child(2) p {
-    transition-delay: 7s; }
+    transition-delay: 9s; }
   .undergo.active .undergo-con span:nth-child(3)::before {
-    transition-delay: 10.5s; }
+    transition-delay: 13.5s; }
   .undergo.active .undergo-con span:nth-child(3) p {
-    transition-delay: 10.5s; }
+    transition-delay: 13.5s; }
   .undergo.active .undergo-con span:nth-child(4)::before {
-    transition-delay: 13.5s; }
+    transition-delay: 18s; }
   .undergo.active .undergo-con span:nth-child(4) p {
-    transition-delay: 13.5s; }
+    transition-delay: 18s; }
   .undergo.active .undergo-con::after {
     height: 100%; }
 
